@@ -73,15 +73,12 @@ import customerModel from '../model/customer.model'
  * @param {{search?: string, skip?: number, limit?: number}} params
  */
 export function getCustomersList(params) {
-    mongoose.connect(uri , {useNewUrlParser: true, useUnifiedTopology: true});
+/*    mongoose.connect(uri , {useNewUrlParser: true, useUnifiedTopology: true});
     mongoose.Promise = global.Promise;
     const db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'connection error:'));
+    db.on('error', console.error.bind(console, 'connection error:'));*/
 
-    return Promise.resolve( customerModel.find({},(err,list) => {
-        if (err) return console.log(err);
-        return  list;
-    }));
+    return customerModel.find({}).exec();
 }
 
 export function getCustomerById(userId) {
