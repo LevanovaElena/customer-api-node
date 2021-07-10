@@ -23,17 +23,18 @@ export function getCustomerById (req, res, next) {
     }).catch(next);
 }
 
-export function setCustomer (req, res, next) {
-    const {customerId} = req.params;
-    return customerService.getCustomerById(customerId).then(user => {
-        res.json(user);
-        //return next();
-    }).catch(next);
-}
 export function createCustomer (req, res, next) {
     const {customerId} = req.params;
-    return customerService.setCustomerById(customerId).then(user => {
-        res.json(user);
-        //return next();
+    return customerService.setCustomerById(customerId).then(result => {
+        res.json(result);
+
+    }).catch(next);
+}
+
+export function deleteCustomerById (req, res,next) {
+    const {customerId} = req.params;
+    return customerService.deleteCustomerById(customerId).then(result => {
+        res.json(result);
+
     }).catch(next);
 }
