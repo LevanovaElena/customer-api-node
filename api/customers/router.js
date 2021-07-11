@@ -1,5 +1,5 @@
 import express from 'express';
-import {getCustomerById, getCustomersList, createCustomer,deleteCustomerById} from "./controllers/customer.controller";
+import {getCustomerById, getCustomersList, createCustomer,deleteCustomerById,updateCustomer} from "./controllers/customer.controller";
 
 //import organizationsRouter from "../organizations/router";
 const router = express.Router();
@@ -10,5 +10,6 @@ router.get('/:customerId', getCustomerById);
 //router.post('/create/:customerId', setCustomer);
 router.post('/create/:customerId', createCustomer);
 router.use('/delete/:customerId', deleteCustomerById);
+router.post('/update/:customerId', updateCustomer);
 
 export default router;

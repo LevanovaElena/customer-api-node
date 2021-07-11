@@ -107,6 +107,10 @@ export function getCustomerById(userId) {
 export function deleteCustomerById(userId) {
     return customerModel.deleteOne({'idCustomer':userId}).exec();
 }
+
+export function updateCustomerById(userId,newCustomer) {
+    return customerModel.findOneAndUpdate({'idCustomer':userId},newCustomer,{new:true}).exec();
+}
 export async function setCustomerById(userId) {
 
     const customerId=listCustomers.find((item)=>item.idCustomer===userId);//для выборки

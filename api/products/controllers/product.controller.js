@@ -30,6 +30,13 @@ export function createProduct (req, res, next) {
 
     }).catch(next);
 }
+/*export function updateProduct (req, res, next) {
+    const {productId} = req.params;
+    return productService.setProductById(productId).then(result => {
+        res.json(result);
+
+    }).catch(next);
+}*/
 
 export function deleteProductById (req, res,next) {
     const {productId} = req.params;
