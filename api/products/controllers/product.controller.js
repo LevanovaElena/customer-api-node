@@ -25,18 +25,18 @@ export function getProductById (req, res, next) {
 
 export function createProduct (req, res, next) {
     const {productId} = req.params;
-    return productService.setProductById(productId).then(result => {
+    return productService.setProductById(req.body).then(result => {
         res.json(result);
 
     }).catch(next);
 }
-/*export function updateProduct (req, res, next) {
+export function updateProduct (req, res, next) {
     const {productId} = req.params;
-    return productService.setProductById(productId).then(result => {
+    return productService.updateProduct(productId,req.body).then(result => {
         res.json(result);
 
     }).catch(next);
-}*/
+}
 
 export function deleteProductById (req, res,next) {
     const {productId} = req.params;

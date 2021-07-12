@@ -25,29 +25,15 @@ export function getCustomerById (req, res, next) {
 }
 
 export function createCustomer (req, res, next) {
-    const {customerId} = req.params;
-    return customerService.setCustomerById(customerId).then(result => {
+    return customerService.setCustomerById(req.body).then(result => {
         res.json(result);
-
     }).catch(next);
 }
 export function updateCustomer (req, res, next) {
     const {customerId} = req.params;
-    const changeCustomer={
-        idCustomer:customerId,
-        firstName:req.header('firstName'),
-        lastName:req.body.lastName,
-        phoneNumber:req.body.phoneNumber,
-        email:req.body.email,
-        totalPurchasesAmount:req.body.totalPurchasesAmount,
-        notes:req.body.notes,
-        addressesList:req.body.addressesList
-    }
-    console.log(req.body);
-    console.log(req.header('firstName'));
-    return customerService.updateCustomerById(customerId,changeCustomer).then(result => {
+            console.log(req.body);
+    return customerService.updateCustomerById(customerId,req.body).then(result => {
         res.json(result);
-
     }).catch(next);
 }
 
@@ -55,6 +41,5 @@ export function deleteCustomerById (req, res,next) {
     const {customerId} = req.params;
     return customerService.deleteCustomerById(customerId).then(result => {
         res.json(result);
-
     }).catch(next);
 }

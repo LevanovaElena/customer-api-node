@@ -8,7 +8,7 @@ router.get('/', getCustomersList);
 
 router.get('/:customerId', getCustomerById);
 //router.post('/create/:customerId', setCustomer);
-router.post('/create/:customerId', createCustomer);
+router.post('/create/', createCustomer);
 router.use('/delete/:customerId', deleteCustomerById);
 router.post('/update/:customerId', updateCustomer);
 

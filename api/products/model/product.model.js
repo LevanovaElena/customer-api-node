@@ -5,10 +5,6 @@ const Schema = mongoose.Schema;
 
 
 const productSchema = new Schema({
-    idProduct:{
-        type:String,
-        required: true
-    },
     name:{
         type:String,
         minLength:3,

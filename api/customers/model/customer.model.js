@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 
 
 const customerSchema = new Schema({
-    idCustomer:{
-        type:String,
-        required: true
-    },
     firstName:{
         type:String,
         minLength:3,
@@ -33,7 +29,6 @@ const customerSchema = new Schema({
     },
     notes:{
         type: [{
-            idNote:Number,
             note:String
         }],
         required:true
@@ -41,10 +36,6 @@ const customerSchema = new Schema({
     addressesList:
         {
             type: [{
-                idAddress: {
-                    type:Number,
-                    required:true
-                },
                 addressLine: {
                     type:String,
                     minLength:3,

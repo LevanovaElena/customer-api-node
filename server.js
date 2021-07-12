@@ -10,8 +10,9 @@ const port = 3000
 const uri="mongodb://localhost:27017/CustomerDB";
 
 app.use(bodyParser.json());
-app.use(bodyParser.raw());
-app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.raw());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 mongoose.set('useFindAndModify', false);
 
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true}).then((result) => {
