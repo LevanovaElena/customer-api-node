@@ -1,4 +1,6 @@
 import * as customerService from '../services/customers.service';
+import {NotFoundError} from "../../core/error/notFoundError";
+
 
 export function getCustomersList(req, res, next) {
     const {
@@ -19,22 +21,42 @@ export function getCustomersList(req, res, next) {
 export function getCustomerById (req, res, next) {
     const {customerId} = req.params;
     return customerService.getCustomerById(customerId).then(result => {
-        res.json(result);
+        if(result!==null){
+           return  res.json(result);
+        }
+        throw NotFoundError("Not found error");
     }).catch(next);
 }
 
 export function createCustomer (req, res, next) {
-    const {customerId} = req.params;
-    return customerService.setCustomerById(customerId).then(result => {
+    return customerService.setCustomerById(req.body).then(result => {
         res.json(result);
+    }).catch(next);
 
+}
+export function updateCustomer (req, res, next) {
+    const {customerId} = req.params;
+    return customerService.updateCustomerById(customerId,req.body).then(result => {
+        res.json(result);
     }).catch(next);
 }
+export function updateCustomerAddAddress (req, res, next) {
+    const {customerId} = req.params;
+    return customerService.addAddress(customerId,req.body).then(result => {
+        res.json(result);
+    }).catch(next);
+}
+export function updateCustomerAddNote (req, res, next) {
+    const {customerId} = req.params;
+    return customerService.addNote(customerId,req.body).then(result => {
+        res.json(result);
+    }).catch(next);
+}
+
 
 export function deleteCustomerById (req, res,next) {
     const {customerId} = req.params;
     return customerService.deleteCustomerById(customerId).then(result => {
         res.json(result);
-
     }).catch(next);
 }
