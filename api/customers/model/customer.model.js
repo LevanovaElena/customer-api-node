@@ -25,7 +25,7 @@ const customerSchema = new Schema({
         required: true
     },
     totalPurchasesAmount:{
-        type:Schema.Types.Decimal128
+        type:Number
     },
     notes:{
         type: [{
