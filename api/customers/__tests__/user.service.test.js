@@ -27,7 +27,7 @@ const docs= [
 
 describe('User service test',()=>{
     test('Should Get Customer List With Correct Parameters',async ()=>{
-        mockingoose(Model).toReturn((query) => {
+        mockingoose(Model).toReturn(() => {
              return docs.length;
         }, 'countDocuments');
         mockingoose(Model).toReturn((query) => {
