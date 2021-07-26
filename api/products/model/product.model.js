@@ -18,7 +18,7 @@ const productSchema = new Schema({
 
     },
     price:{
-        type:Decimal128,
+        type:Number,
         //match:
         required: true
     }

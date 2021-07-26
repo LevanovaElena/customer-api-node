@@ -1,12 +1,15 @@
 import productModel from '../model/product.model'
 
 
+
 /**
  *
  * @param {{search?: string, skip?: number, limit?: number}} params
  */
-export function getProductsList(params) {
-    return productModel.find({}).exec();
+export async function getProductsList(params) {
+    const total= await productModel.countDocuments({}).exec();
+    const docs= await productModel.find({}).skip(params.skip).limit(params.limit).exec();
+    return {total,docs,skip:params.skip,limit:params.limit};
 }
 
 export function getProductById(productId) {
@@ -15,7 +18,7 @@ export function getProductById(productId) {
 export function deleteProductById(productId) {
     return productModel.deleteOne({'_id':productId}).exec();
 }
-export function setProductById(body) {
+export function setProduct(body) {
     const newProduct = new productModel({...body});
     return newProduct.save();
 }
